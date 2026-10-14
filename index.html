@@ -5,9 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#101827">
-
-  <title>Pet Identification | Contact Owner</title>
   <meta name="description" content="Pet identification and owner contact information.">
+  <title>Sabina | Pet Identification</title>
 
   <style>
     :root {
@@ -20,9 +19,7 @@
       --accent: #f2c078;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html {
       -webkit-text-size-adjust: 100%;
@@ -49,6 +46,41 @@
       margin: 0 auto;
     }
 
+    .language-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .language-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .language-select {
+      max-width: 68%;
+      min-height: 46px;
+      padding: 10px 36px 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel);
+      color: var(--text);
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    .language-select:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     .photo {
       display: block;
       width: 100%;
@@ -62,7 +94,7 @@
 
     h1 {
       margin: 22px 0 8px;
-      font-size: clamp(32px, 9vw, 42px);
+      font-size: clamp(34px, 9vw, 42px);
       line-height: 1.1;
       letter-spacing: -0.8px;
     }
@@ -83,6 +115,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
+      width: 100%;
       min-height: 72px;
       padding: 14px 16px;
       border: 1px solid var(--border);
@@ -91,19 +124,13 @@
       color: var(--text);
       text-decoration: none;
       font: inherit;
+      text-align: left;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
     }
 
-    .action:active {
-      opacity: .82;
-    }
-
-    .action:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 3px;
-    }
+    .action:active { opacity: .82; }
 
     .icon {
       display: grid;
@@ -140,13 +167,8 @@
       border-color: var(--accent);
     }
 
-    .call .icon {
-      background: rgba(0, 0, 0, .09);
-    }
-
-    .call .detail {
-      color: #34302a;
-    }
+    .call .icon { background: rgba(0, 0, 0, .09); }
+    .call .detail { color: #34302a; }
 
     .footer {
       margin-top: 22px;
@@ -157,21 +179,37 @@
     }
 
     @media (min-width: 600px) {
-      body {
-        padding-top: 32px;
-      }
+      body { padding-top: 32px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      * {
-        scroll-behavior: auto !important;
-      }
+      * { transition: none !important; }
     }
   </style>
 </head>
 
 <body>
   <main>
+    <div class="language-row">
+      <label class="language-label" for="language" id="languageLabel">
+        Language
+      </label>
+
+      <select class="language-select" id="language"
+              aria-label="Select language">
+        <option value="en">🇬🇧 English</option>
+        <option value="es">🇪🇸 Español</option>
+        <option value="nl">🇳🇱 Nederlands</option>
+        <option value="pl">🇵🇱 Polski</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="pt">🇵🇹 Português</option>
+        <option value="zh">🇨🇳 中文（简体）</option>
+        <option value="ja">🇯🇵 日本語</option>
+        <option value="it">🇮🇹 Italiano</option>
+      </select>
+    </div>
+
     <img
       class="photo"
       src="./Sabina.jpg"
@@ -181,49 +219,44 @@
       fetchpriority="high"
     >
 
-    <h1>Sabina</h1>
-
-    <p class="instruction">
+    <h1 id="petName">Sabina</h1>
+    <p class="instruction" id="instruction">
       Have you found this kennel or need to contact the owner?
       Please use any of the options below.
     </p>
 
     <section class="actions" aria-label="Owner contact options">
-
       <a class="action call" href="tel:+523121329025">
         <span class="icon" aria-hidden="true">☎</span>
         <span class="copy">
-          <span class="title">Call Owner</span>
+          <span class="title" id="callTitle">Call Owner</span>
           <span class="detail">+52 312 132 9025</span>
         </span>
       </a>
 
-      <a class="action"
-         href="https://wa.me/523121329025"
-         target="_blank"
-         rel="noopener noreferrer">
+      <a class="action" href="https://wa.me/523121329025"
+         target="_blank" rel="noopener noreferrer">
         <span class="icon" aria-hidden="true">💬</span>
         <span class="copy">
-          <span class="title">WhatsApp</span>
-          <span class="detail">Message the owner</span>
+          <span class="title" id="whatsappTitle">WhatsApp</span>
+          <span class="detail" id="whatsappDetail">Message the owner</span>
         </span>
       </a>
 
       <a class="action" href="mailto:ramses7083@gmail.com">
         <span class="icon" aria-hidden="true">✉</span>
         <span class="copy">
-          <span class="title">Email</span>
+          <span class="title" id="emailTitle">Email</span>
           <span class="detail">ramses7083@gmail.com</span>
         </span>
       </a>
 
       <a class="action"
          href="https://www.instagram.com/sabina_colimota/"
-         target="_blank"
-         rel="noopener noreferrer">
+         target="_blank" rel="noopener noreferrer">
         <span class="icon" aria-hidden="true">◎</span>
         <span class="copy">
-          <span class="title">Instagram</span>
+          <span class="title" id="instagramTitle">Instagram</span>
           <span class="detail">@sabina_colimota</span>
         </span>
       </a>
@@ -231,29 +264,201 @@
       <button class="action" id="saveContact" type="button">
         <span class="icon" aria-hidden="true">＋</span>
         <span class="copy">
-          <span class="title">Save Owner Contact</span>
-          <span class="detail">Ramses - Dog Sabina</span>
+          <span class="title" id="saveTitle">Save Owner Contact</span>
+          <span class="detail" id="saveDetail">Ramses - Dog Sabina</span>
         </span>
       </button>
-
     </section>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
       Pet identification and owner contact information.
     </footer>
   </main>
 
   <script>
+    const translations = {
+      en: {
+        label: "Language",
+        instruction: "Have you found this kennel or need to contact the owner? Please use any of the options below.",
+        call: "Call Owner",
+        whatsapp: "WhatsApp",
+        message: "Message the owner",
+        email: "Email",
+        instagram: "Instagram",
+        save: "Save Owner Contact",
+        contact: "Ramses - Dog Sabina",
+        note: "Owner contact for the dog associated with this kennel.",
+        footer: "Pet identification and owner contact information."
+      },
+      es: {
+        label: "Idioma",
+        instruction: "¿Has encontrado esta kennel o necesitas contactar con su propietario? Utiliza cualquiera de las siguientes opciones.",
+        call: "Llamar al propietario",
+        whatsapp: "WhatsApp",
+        message: "Enviar mensaje al propietario",
+        email: "Correo electrónico",
+        instagram: "Instagram",
+        save: "Guardar contacto",
+        contact: "Ramses - Perro Sabina",
+        note: "Contacto del propietario del perro asociado a esta kennel.",
+        footer: "Identificación de mascota e información de contacto."
+      },
+      nl: {
+        label: "Taal",
+        instruction: "Heeft u deze kennel gevonden of wilt u contact opnemen met de eigenaar? Gebruik een van de onderstaande opties.",
+        call: "Eigenaar bellen",
+        whatsapp: "WhatsApp",
+        message: "Stuur de eigenaar een bericht",
+        email: "E-mail",
+        instagram: "Instagram",
+        save: "Contact opslaan",
+        contact: "Ramses - Hond Sabina",
+        note: "Contactgegevens van de eigenaar van de hond bij deze kennel.",
+        footer: "Huisdieridentificatie en contactgegevens."
+      },
+      pl: {
+        label: "Język",
+        instruction: "Znalazłeś tę klatkę transportową lub chcesz skontaktować się z właścicielem? Skorzystaj z jednej z poniższych opcji.",
+        call: "Zadzwoń do właściciela",
+        whatsapp: "WhatsApp",
+        message: "Napisz do właściciela",
+        email: "E-mail",
+        instagram: "Instagram",
+        save: "Zapisz kontakt",
+        contact: "Ramses - Pies Sabina",
+        note: "Kontakt do właściciela psa związanego z tą klatką transportową.",
+        footer: "Identyfikacja zwierzęcia i dane kontaktowe."
+      },
+      fr: {
+        label: "Langue",
+        instruction: "Vous avez trouvé cette cage de transport ou souhaitez contacter le propriétaire ? Utilisez l'une des options ci-dessous.",
+        call: "Appeler le propriétaire",
+        whatsapp: "WhatsApp",
+        message: "Envoyer un message au propriétaire",
+        email: "E-mail",
+        instagram: "Instagram",
+        save: "Enregistrer le contact",
+        contact: "Ramses - Chien Sabina",
+        note: "Contact du propriétaire du chien associé à cette cage.",
+        footer: "Identification de l’animal et coordonnées du propriétaire."
+      },
+      de: {
+        label: "Sprache",
+        instruction: "Haben Sie diese Transportbox gefunden oder möchten Sie den Besitzer kontaktieren? Nutzen Sie eine der folgenden Möglichkeiten.",
+        call: "Besitzer anrufen",
+        whatsapp: "WhatsApp",
+        message: "Nachricht an den Besitzer",
+        email: "E-Mail",
+        instagram: "Instagram",
+        save: "Kontakt speichern",
+        contact: "Ramses - Hund Sabina",
+        note: "Kontakt des Besitzers des zu dieser Transportbox gehörenden Hundes.",
+        footer: "Tieridentifikation und Kontaktdaten des Besitzers."
+      },
+      pt: {
+        label: "Idioma",
+        instruction: "Encontrou esta transportadora ou precisa de contactar o proprietário? Utilize uma das opções abaixo.",
+        call: "Ligar ao proprietário",
+        whatsapp: "WhatsApp",
+        message: "Enviar mensagem ao proprietário",
+        email: "E-mail",
+        instagram: "Instagram",
+        save: "Guardar contacto",
+        contact: "Ramses - Cão Sabina",
+        note: "Contacto do proprietário do cão associado a esta transportadora.",
+        footer: "Identificação do animal e dados de contacto."
+      },
+      zh: {
+        label: "语言",
+        instruction: "如果您发现了这个宠物航空箱，或需要联系主人，请使用以下任一方式。",
+        call: "致电主人",
+        whatsapp: "WhatsApp",
+        message: "给主人发送消息",
+        email: "电子邮件",
+        instagram: "Instagram",
+        save: "保存联系人",
+        contact: "Ramses - Sabina 的主人",
+        note: "与此宠物航空箱相关的狗狗主人的联系方式。",
+        footer: "宠物身份信息及主人联系方式。"
+      },
+      ja: {
+        label: "言語",
+        instruction: "このペット用ケージを見つけた方、または飼い主への連絡が必要な方は、以下の方法をご利用ください。",
+        call: "飼い主に電話",
+        whatsapp: "WhatsApp",
+        message: "飼い主にメッセージ",
+        email: "メール",
+        instagram: "Instagram",
+        save: "連絡先を保存",
+        contact: "Ramses - Sabinaの飼い主",
+        note: "このケージに関連する犬の飼い主の連絡先です。",
+        footer: "ペットの識別情報と飼い主の連絡先。"
+      },
+      it: {
+        label: "Lingua",
+        instruction: "Hai trovato questo trasportino o devi contattare il proprietario? Usa una delle opzioni qui sotto.",
+        call: "Chiama il proprietario",
+        whatsapp: "WhatsApp",
+        message: "Scrivi al proprietario",
+        email: "E-mail",
+        instagram: "Instagram",
+        save: "Salva contatto",
+        contact: "Ramses - Cane Sabina",
+        note: "Contatto del proprietario del cane associato a questo trasportino.",
+        footer: "Identificazione dell’animale e contatti del proprietario."
+      }
+    };
+
+    const languageSelect = document.getElementById("language");
+
+    function setLanguage(language) {
+      const t = translations[language] || translations.en;
+
+      document.documentElement.lang = language;
+      document.title = language === "en"
+        ? "Sabina | Pet Identification"
+        : `${t.contact} | Pet Identification`;
+
+      document.getElementById("languageLabel").textContent = t.label;
+      document.getElementById("instruction").textContent = t.instruction;
+      document.getElementById("callTitle").textContent = t.call;
+      document.getElementById("whatsappTitle").textContent = t.whatsapp;
+      document.getElementById("whatsappDetail").textContent = t.message;
+      document.getElementById("emailTitle").textContent = t.email;
+      document.getElementById("instagramTitle").textContent = t.instagram;
+      document.getElementById("saveTitle").textContent = t.save;
+      document.getElementById("saveDetail").textContent = t.contact;
+      document.getElementById("footer").textContent = t.footer;
+
+      return t;
+    }
+
+    languageSelect.addEventListener("change", event => {
+      setLanguage(event.target.value);
+    });
+
     document.getElementById("saveContact").addEventListener("click", () => {
+      const language = languageSelect.value;
+      const t = translations[language] || translations.en;
+
+      const escapeVCard = value => value
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/,/g, "\\,")
+        .replace(/;/g, "\\;");
+
+      const contactName = escapeVCard(t.contact);
+      const note = escapeVCard(t.note);
+
       const lines = [
         "BEGIN:VCARD",
         "VERSION:3.0",
-        "N:;Ramses - Dog Sabina;;;",
-        "FN:Ramses - Dog Sabina",
+        `N:;${contactName};;;`,
+        `FN:${contactName}`,
         "TEL;TYPE=CELL,VOICE:+523121329025",
         "EMAIL;TYPE=INTERNET:ramses7083@gmail.com",
         "URL:https://www.instagram.com/sabina_colimota/",
-        "NOTE:Owner contact for the dog associated with this kennel.",
+        `NOTE:${note}`,
         "END:VCARD"
       ];
 
@@ -272,6 +477,9 @@
 
       setTimeout(() => URL.revokeObjectURL(url), 3000);
     });
+
+    // English is the default language.
+    setLanguage("en");
   </script>
 </body>
 </html>
